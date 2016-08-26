@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+    <script>
+    	function isCustomElementSupported(){
+    		return 'registerElement' in document
+    	}
+
+    	console.log(isCustomElementSupported());
+
+    	var objectPrototype=Object.create(HTMLElement.prototype);
+    	Object.defineProperty(objectPrototype,'title',{
+    		writable:true,
+    		value:"kk"
+    	});
+
+    	objectPrototype.createdCallback=function(){
+    		console.log('kkk');
+    		console.log(this.title);
+    		this.innerText=this.title;
+    	}
+
+    	var myNameElement=document.registerElement("my-name",{
+    		prototype:objectPrototype
+    	});
+    </script>
+</head>
+<body>
+    <my-name title='welcome to custom element1'></my-name>
+    <br/>
+    <my-name title='welcome to custom element2'></my-name>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<script async>
+	function handleSuccess(){
+		alert('success');
+	}
+
+	function handleError(){
+		alert('error');
+	}
+</script>
+<link href="message.html" rel='import' onload='handleSuccess(event)' onerror='handleError(event)'/>
+</head>
+<body>
+	<div id="message"></div>
+	<template id="aTemplate">
+		<style>
+			#title{
+				color: #f00;
+			}
+		</style>
+		<h2 id="title">aaaaa</h2>
+		<script>
+			alert("this is a script");
+		</script>
+	</template>
+    <script>
+    	var template=document.createElement('template');
+    	console.log('content' in template);
+
+    	var msg=document.querySelector("#message");
+
+    	//cloneNode
+    	// var message=document.getElementById('message');
+    	// console.log(document.getElementById('title'));
+    	// var aTemplate=document.getElementById('aTemplate');
+    	// // console.log(document.getElementById('title'));
+    	// aTemplate_content=aTemplate.content.cloneNode(true);
+    	// msg.appendChild(aTemplate_content)
+
+    	// htmlImport
+    	// var aTemplate=document.getElementById('aTemplate');
+    	// templateContent=aTemplate.content;
+    	// activeNode=document.importNode(templateContent,true);
+    	// console.log(activeNode);
+    	// msg.appendChild(activeNode);
+
+
+    	//检测是否支持import
+    	function isSupportImport(){
+    		var link=document.createElement('link');
+    		return 'import' in link;
+    	}
+
+    	console.log(isSupportImport());
+
+
+
+
+    	//引入外部文档
+    	// var link=document.querySelector('link[rel="import"]')
+    	// link.addEventListener('load',function(){
+    	// 	alert('success');
+    	// },false)
+    	// link.onerroe=function(){
+    	// 	alert('zzzz');
+    	// }
+    	// var externalDocument=link.import;
+    	// var headerElement=externalDocument.querySelector('h1');
+    	// msg.appendChild(headerElement);
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

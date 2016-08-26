@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>custome</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <script>
+    	//自定义元素
+    	var newObject=Object.create(HTMLElement.prototype);
+
+
+    	Object.defineProperties(newObject,{
+    		title:{
+    			writable:true
+    		},
+    		country:{
+    			writable:false,
+    			value:"India"
+    		}
+    	})
+
+    	//对象生命周期
+    	//一个对象刚刚被创建
+    	newObject.createdCallback=function(){
+    		console.log('obj created');
+    	}
+
+    	var ele=document.registerElement('welcome-message',{
+    		prototype:newObject
+    	})
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+</style>
+</head>
+<body>
+    <!-- <progress></progress> -->
+    <div id="aShadowHost"></div>
+    <template id="selectorTemplate">
+    	<style>
+    		:host input{
+    			background:lightyellow;
+    		}
+    		:host .labelClass{
+    			color:blue;
+    		}
+            :host .pointTest{
+                width:100px;
+                height:100px;
+                background: #00c;
+                position: fixed;
+                left: 100px;
+                top:100px;
+            }
+    	</style>
+    	<form>
+    		<label for='nameElement' class='labelClass'>Name</label>
+    		<input type='text' id='nameElement' placeholder="Enter your name" value='Sandeep' autofoucs>
+    	</form>
+        <div class='pointTest'></div>
+    </template>
+    <script>
+    	(function(){
+    		var shadowHost=document.getElementById('aShadowHost'),
+	    		shadowRoot1=shadowHost.createShadowRoot(),
+	    		shadowRoot2=shadowHost.createShadowRoot(),
+	    		templateContent=document.getElementById('selectorTemplate').content,
+	    		templateNodes=document.importNode(templateContent,true);
+	    	shadowRoot1.innerText='inside shadowRoot1';
+	    	shadowRoot2.appendChild(templateNodes);
+
+
+
+	    	console.log(shadowRoot2.getElementById('nameElement'));
+
+            console.log(shadowRoot2.elementFromPoint(100,100));
+
+
+	    	//shadow root方法
+	    	// 在shadow tree中获取dom
+	    	// console.log('getElementById:',shadowRoot2.getElementById('nameElement'));
+	    	// console.log('getElementsByClassName:',shadowRoot2.getElementsByClassName('labelClass'));
+	    	// console.log('getElementsByTagName:',shadowRoot2.getElementsByTagName('label'));
+	    	// console.log('getElementsByTagNameNS',shadowRoot2.getElementsByTagNameNS('*','label'));
+	    	console.log('getSelection() Method:',shadowRoot2.getSelection());
+	    	//返回对应坐标上的dom元素
+	    	// console.log('elementFromPoint:',shadowRoot2.elementFromPoint(0,0));
+
+
+	    	//Shadow Root
+	    	// console.log('activeElement:',shadowRoot2.activeElement);
+	    	console.log('host:',shadowRoot2.host);
+	    	console.log('oldShadowRoot:',shadowRoot2.oldShadowRoot);
+	    	// console.log('innerHTML',shadowRoot2.innerHTML);
+	    	// console.log('stylesheets',shadowRoot2.styleSheets);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    	}())
+    </script>
+
+    <script>
+    	//检测shadow-dom
+    	function isSupported(){
+    		return 'createShadowRoot' in document.body;
+    	}
+
+    	console.log(isSupported());
+    </script>
+</body>
+</html>
